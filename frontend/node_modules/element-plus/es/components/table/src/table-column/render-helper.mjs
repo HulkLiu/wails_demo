@@ -1,4 +1,4 @@
-import { getCurrentInstance, ref, watchEffect, computed, unref, h, Comment } from 'vue';
+import { getCurrentInstance, ref, watchEffect, computed, unref, renderSlot, h, Comment } from 'vue';
 import '../../../../utils/index.mjs';
 import '../../../../hooks/index.mjs';
 import { cellForced, getDefaultClassName, defaultRenderCell, treeCellPrefix } from '../config.mjs';
@@ -88,8 +88,7 @@ function useRender(props, slots, owner) {
     } else if (column.type !== "selection") {
       column.renderHeader = (scope) => {
         instance.columnConfig.value["label"];
-        const renderHeader = slots.header;
-        return renderHeader ? renderHeader(scope) : column.label;
+        return renderSlot(slots, "header", scope, () => [column.label]);
       };
     }
     let originRenderCell = column.renderCell;

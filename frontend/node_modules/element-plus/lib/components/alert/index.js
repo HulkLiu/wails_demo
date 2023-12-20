@@ -3,8 +3,8 @@
 Object.defineProperty(exports, '__esModule', { value: true });
 
 require('../../utils/index.js');
-var alert$1 = require('./src/alert2.js');
-var alert = require('./src/alert.js');
+var alert$1 = require('./src/alert.js');
+var alert = require('./src/alert2.js');
 var install = require('../../utils/vue/install.js');
 
 const ElAlert = install.withInstall(alert$1["default"]);

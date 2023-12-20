@@ -350,9 +350,9 @@ declare const _default: import("vue").DefineComponent<{
     readonly disabled: BooleanConstructor;
     readonly limit: NumberConstructor;
 }>>, {
-    readonly drag: import("element-plus/es/utils").EpPropMergeType<BooleanConstructor, unknown, unknown>;
     readonly disabled: boolean;
     readonly name: string;
+    readonly drag: import("element-plus/es/utils").EpPropMergeType<BooleanConstructor, unknown, unknown>;
     readonly multiple: import("element-plus/es/utils").EpPropMergeType<BooleanConstructor, unknown, unknown>;
     readonly data: import("element-plus/es/utils").EpPropMergeType<(new (...args: any[]) => ((rawFile: UploadRawFile) => import("element-plus/es/utils").Awaitable<import("element-plus/es/utils").Mutable<Record<string, any>>>) | import("element-plus/es/utils").Mutable<Record<string, any>> | Promise<import("element-plus/es/utils").Mutable<Record<string, any>>>) | (() => ((rawFile: UploadRawFile) => import("element-plus/es/utils").Awaitable<import("element-plus/es/utils").Mutable<Record<string, any>>>) | import("element-plus/es/utils").Awaitable<import("element-plus/es/utils").Mutable<Record<string, any>>>) | ((new (...args: any[]) => ((rawFile: UploadRawFile) => import("element-plus/es/utils").Awaitable<import("element-plus/es/utils").Mutable<Record<string, any>>>) | import("element-plus/es/utils").Mutable<Record<string, any>> | Promise<import("element-plus/es/utils").Mutable<Record<string, any>>>) | (() => ((rawFile: UploadRawFile) => import("element-plus/es/utils").Awaitable<import("element-plus/es/utils").Mutable<Record<string, any>>>) | import("element-plus/es/utils").Awaitable<import("element-plus/es/utils").Mutable<Record<string, any>>>))[], unknown, unknown>;
     readonly onError: (err: import("./ajax").UploadAjaxError, rawFile: UploadRawFile) => void;

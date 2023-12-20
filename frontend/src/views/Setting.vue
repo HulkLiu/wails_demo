@@ -34,15 +34,15 @@
                         </n-button>
                       </n-form-item>
 
-                      <n-form-item label="ExcelDir" path="inputValue">
-                        <n-input v-model:value="modelBak.Bak.ExcelDir" placeholder="ExcelDir" />
+                      <n-form-item label="Excel保存目录" path="inputValue">
+                        <n-input v-model:value="modelBak.Bak.ExcelDir" placeholder="Excel保存目录" />
                         <n-button attr-type="button" @click="updateModelBak" type="success">
                           更新
                         </n-button>
                       </n-form-item>
 
-                      <n-form-item label="ContainerID" path="inputValue">
-                        <n-input v-model:value="modelBak.Bak.ContainerID" placeholder="ContainerID" />
+                      <n-form-item label="ES容器ID" path="inputValue">
+                        <n-input v-model:value="modelBak.Bak.ContainerID" placeholder="ES容器ID" />
                         <n-button attr-type="button" @click="updateModelBak" type="success">
                           更新
                         </n-button>

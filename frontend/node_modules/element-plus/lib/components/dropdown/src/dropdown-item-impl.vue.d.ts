@@ -37,7 +37,7 @@ declare const _default: import("vue").DefineComponent<{
     handleFocus: (e: Event) => void;
     handleKeydown: (event: KeyboardEvent) => void;
     handleMousedown: (e: Event) => void;
-}, unknown, {}, {}, import("vue").ComponentOptionsMixin, import("vue").ComponentOptionsMixin, ("click" | "pointerleave" | "pointermove" | "clickimpl")[], "click" | "pointerleave" | "pointermove" | "clickimpl", import("vue").VNodeProps & import("vue").AllowedComponentProps & import("vue").ComponentCustomProps, Readonly<import("vue").ExtractPropTypes<{
+}, unknown, {}, {}, import("vue").ComponentOptionsMixin, import("vue").ComponentOptionsMixin, ("click" | "pointermove" | "pointerleave" | "clickimpl")[], "click" | "pointermove" | "pointerleave" | "clickimpl", import("vue").VNodeProps & import("vue").AllowedComponentProps & import("vue").ComponentCustomProps, Readonly<import("vue").ExtractPropTypes<{
     readonly command: import("element-plus/es/utils").EpPropFinalized<readonly [ObjectConstructor, StringConstructor, NumberConstructor], unknown, unknown, () => {}, boolean>;
     readonly disabled: BooleanConstructor;
     readonly divided: BooleanConstructor;

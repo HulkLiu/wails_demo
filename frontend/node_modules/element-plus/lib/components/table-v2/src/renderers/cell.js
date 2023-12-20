@@ -9,8 +9,8 @@ require('../components/index.js');
 var constants = require('../constants.js');
 var _private = require('../private.js');
 var utils = require('../utils.js');
-var cell = require('../components/cell.js');
 var shared = require('@vue/shared');
+var cell = require('../components/cell.js');
 var expandIcon = require('../components/expand-icon.js');
 
 const CellRenderer = ({
@@ -45,8 +45,6 @@ const CellRenderer = ({
     dataKey,
     dataGetter
   } = column;
-  const columnCellRenderer = utils.componentToSlot(cellRenderer);
-  const CellComponent = columnCellRenderer || slots.default || ((props) => vue.createVNode(cell["default"], props, null));
   const cellData = shared.isFunction(dataGetter) ? dataGetter({
     columns,
     column,
@@ -72,7 +70,8 @@ const CellRenderer = ({
     rowData,
     rowIndex
   };
-  const Cell = CellComponent(cellProps);
+  const columnCellRenderer = utils.componentToSlot(cellRenderer);
+  const Cell = columnCellRenderer ? columnCellRenderer(cellProps) : vue.renderSlot(slots, "default", cellProps, () => [vue.createVNode(cell["default"], cellProps, null)]);
   const kls = [ns.e("row-cell"), column.class, column.align === constants.Alignment.CENTER && ns.is("align-center"), column.align === constants.Alignment.RIGHT && ns.is("align-right")];
   const expandable = rowIndex >= 0 && expandColumnKey && column.key === expandColumnKey;
   const expanded = rowIndex >= 0 && expandedRowKeys.includes(rowData[rowKey]);

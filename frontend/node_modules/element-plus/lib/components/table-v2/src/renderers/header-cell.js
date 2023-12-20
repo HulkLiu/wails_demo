@@ -35,8 +35,8 @@ const HeaderCellRenderer = (props, {
     ...props,
     class: ns.e("header-cell-text")
   };
-  const cellRenderer = utils.componentToSlot(headerCellRenderer) || slots.default || ((props2) => vue.createVNode(headerCell["default"], props2, null));
-  const Cell = cellRenderer(cellProps);
+  const columnCellRenderer = utils.componentToSlot(headerCellRenderer);
+  const Cell = columnCellRenderer ? columnCellRenderer(cellProps) : vue.renderSlot(slots, "default", cellProps, () => [vue.createVNode(headerCell["default"], cellProps, null)]);
   const {
     sortBy,
     sortState,

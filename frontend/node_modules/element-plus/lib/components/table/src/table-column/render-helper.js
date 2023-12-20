@@ -92,8 +92,7 @@ function useRender(props, slots, owner) {
     } else if (column.type !== "selection") {
       column.renderHeader = (scope) => {
         instance.columnConfig.value["label"];
-        const renderHeader = slots.header;
-        return renderHeader ? renderHeader(scope) : column.label;
+        return vue.renderSlot(slots, "header", scope, () => [column.label]);
       };
     }
     let originRenderCell = column.renderCell;

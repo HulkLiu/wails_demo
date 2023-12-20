@@ -20,19 +20,13 @@ var ElDatePickerCell = vue.defineComponent({
       const {
         cell
       } = props;
-      if (slots.default) {
-        const list = slots.default(cell).filter((item) => {
-          return item.patchFlag !== -2 && item.type.toString() !== "Symbol(Comment)" && item.type.toString() !== "Symbol(v-cmt)";
-        });
-        if (list.length) {
-          return list;
-        }
-      }
-      return vue.createVNode("div", {
+      return vue.renderSlot(slots, "default", {
+        ...cell
+      }, () => [vue.createVNode("div", {
         "class": ns.b()
       }, [vue.createVNode("span", {
         "class": ns.e("text")
-      }, [cell == null ? void 0 : cell.text])]);
+      }, [cell == null ? void 0 : cell.text])])]);
     };
   }
 });

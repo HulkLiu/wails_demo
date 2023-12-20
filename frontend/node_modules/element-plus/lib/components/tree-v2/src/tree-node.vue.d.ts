@@ -33,7 +33,7 @@ declare const _default: import("vue").DefineComponent<{
         onToggle?: ((node: import("./types").TreeNode) => any) | undefined;
         onCheck?: ((node: import("./types").TreeNode, checked: CheckboxValueType) => any) | undefined;
     }>>;
-    emit: ((event: "click", node: import("./types").TreeNode, e: MouseEvent) => void) & ((event: "toggle", node: import("./types").TreeNode) => void) & ((event: "check", node: import("./types").TreeNode, checked: CheckboxValueType) => void);
+    emit: ((event: "click", node: import("./types").TreeNode, e: MouseEvent) => void) & ((event: "check", node: import("./types").TreeNode, checked: CheckboxValueType) => void) & ((event: "toggle", node: import("./types").TreeNode) => void);
     tree: import("./types").TreeContext | undefined;
     ns: {
         namespace: import("vue").ComputedRef<string>;

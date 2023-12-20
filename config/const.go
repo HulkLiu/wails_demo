@@ -34,8 +34,9 @@ const (
 	GitFilePath = "resource/%s/%s%s"
 	GitMarkFile = "mark"
 	GitMessage  = "upload by cantor"
-	GitRepoURL  = "https://github.com/evercyan/cantor"
-	GitAppURL   = GitRepoURL + "/releases/tag/%s"
+	//GitRepoURL  = "https://github.com/evercyan/cantor"
+	GitRepoURL = "https://github.com/HulkLiu/wails_demo"
+	GitAppURL  = GitRepoURL + "/releases/tag/%s"
 )
 
 var (

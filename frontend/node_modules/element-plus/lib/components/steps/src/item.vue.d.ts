@@ -29,7 +29,7 @@ declare const _default: import("vue").DefineComponent<{
         __epPropKey: true;
     };
     readonly description: import("element-plus/es/utils").EpPropFinalized<StringConstructor, unknown, unknown, "", boolean>;
-    readonly status: import("element-plus/es/utils").EpPropFinalized<StringConstructor, "" | "error" | "success" | "wait" | "finish" | "process", unknown, "", boolean>;
+    readonly status: import("element-plus/es/utils").EpPropFinalized<StringConstructor, "" | "success" | "error" | "wait" | "finish" | "process", unknown, "", boolean>;
 }, {
     props: Readonly<import("@vue/shared").LooseRequired<Readonly<import("vue").ExtractPropTypes<{
         readonly title: import("element-plus/es/utils").EpPropFinalized<StringConstructor, unknown, unknown, "", boolean>;
@@ -40,7 +40,7 @@ declare const _default: import("vue").DefineComponent<{
             __epPropKey: true;
         };
         readonly description: import("element-plus/es/utils").EpPropFinalized<StringConstructor, unknown, unknown, "", boolean>;
-        readonly status: import("element-plus/es/utils").EpPropFinalized<StringConstructor, "" | "error" | "success" | "wait" | "finish" | "process", unknown, "", boolean>;
+        readonly status: import("element-plus/es/utils").EpPropFinalized<StringConstructor, "" | "success" | "error" | "wait" | "finish" | "process", unknown, "", boolean>;
     }>> & {
         [x: string & `on${string}`]: ((...args: any[]) => any) | ((...args: unknown[]) => any) | undefined;
     }>>;
@@ -160,10 +160,10 @@ declare const _default: import("vue").DefineComponent<{
         __epPropKey: true;
     };
     readonly description: import("element-plus/es/utils").EpPropFinalized<StringConstructor, unknown, unknown, "", boolean>;
-    readonly status: import("element-plus/es/utils").EpPropFinalized<StringConstructor, "" | "error" | "success" | "wait" | "finish" | "process", unknown, "", boolean>;
+    readonly status: import("element-plus/es/utils").EpPropFinalized<StringConstructor, "" | "success" | "error" | "wait" | "finish" | "process", unknown, "", boolean>;
 }>>, {
     readonly title: string;
     readonly description: string;
-    readonly status: import("element-plus/es/utils").EpPropMergeType<StringConstructor, "" | "error" | "success" | "wait" | "finish" | "process", unknown>;
+    readonly status: import("element-plus/es/utils").EpPropMergeType<StringConstructor, "" | "success" | "error" | "wait" | "finish" | "process", unknown>;
 }>;
 export default _default;

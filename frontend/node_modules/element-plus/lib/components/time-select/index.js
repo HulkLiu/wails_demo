@@ -2,7 +2,7 @@
 
 Object.defineProperty(exports, '__esModule', { value: true });
 
-var timeSelect = require('./src/time-select2.js');
+var timeSelect = require('./src/time-select.js');
 
 timeSelect["default"].install = (app) => {
   app.component(timeSelect["default"].name, timeSelect["default"]);

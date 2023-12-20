@@ -9,7 +9,7 @@ export declare const useButton: (props: ButtonProps, emit: SetupContext<ButtonEm
         ariaDisabled: boolean;
         disabled: boolean;
         autofocus: boolean;
-        type: import("../../../utils").EpPropMergeType<StringConstructor, "reset" | "submit" | "button", unknown>;
+        type: import("../../../utils").EpPropMergeType<StringConstructor, "button" | "reset" | "submit", unknown>;
     } | {
         ariaDisabled?: undefined;
         disabled?: undefined;

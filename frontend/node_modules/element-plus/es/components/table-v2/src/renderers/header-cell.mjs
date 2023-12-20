@@ -1,4 +1,4 @@
-import { createVNode, mergeProps } from 'vue';
+import { createVNode, renderSlot, mergeProps } from 'vue';
 import '../components/index.mjs';
 import { oppositeOrderMap, SortOrder, Alignment } from '../constants.mjs';
 import { placeholderSign } from '../private.mjs';
@@ -31,8 +31,8 @@ const HeaderCellRenderer = (props, {
     ...props,
     class: ns.e("header-cell-text")
   };
-  const cellRenderer = componentToSlot(headerCellRenderer) || slots.default || ((props2) => createVNode(HeaderCell, props2, null));
-  const Cell = cellRenderer(cellProps);
+  const columnCellRenderer = componentToSlot(headerCellRenderer);
+  const Cell = columnCellRenderer ? columnCellRenderer(cellProps) : renderSlot(slots, "default", cellProps, () => [createVNode(HeaderCell, cellProps, null)]);
   const {
     sortBy,
     sortState,

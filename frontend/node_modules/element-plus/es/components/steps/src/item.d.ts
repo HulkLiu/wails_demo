@@ -9,7 +9,7 @@ export declare const stepProps: {
         __epPropKey: true;
     };
     readonly description: import("element-plus/es/utils").EpPropFinalized<StringConstructor, unknown, unknown, "", boolean>;
-    readonly status: import("element-plus/es/utils").EpPropFinalized<StringConstructor, "" | "error" | "success" | "wait" | "finish" | "process", unknown, "", boolean>;
+    readonly status: import("element-plus/es/utils").EpPropFinalized<StringConstructor, "" | "success" | "error" | "wait" | "finish" | "process", unknown, "", boolean>;
 };
 export declare type StepProps = ExtractPropTypes<typeof stepProps>;
 export declare type StepInstance = InstanceType<typeof Step>;

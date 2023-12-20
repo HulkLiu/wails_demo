@@ -119,7 +119,7 @@
 import {defineEmits,defineComponent, h, ref,reactive, nextTick, onMounted, toRefs ,computed} from "vue";
 import {ExportVideoList, VideoManage,VideoCreate,VideoDelete,VideoGetNumber } from "../../wailsjs/go/internal/App.js";
 import {ElNotification} from "element-plus";
-
+import { ElMessage, ElMessageBox } from 'element-plus'
 import { NTable, NDialog, NForm, NFormItem, NInput,useMessage,NTag, NButton } from 'naive-ui';
 
 const emits = defineEmits(['emit-video-list']);
@@ -253,23 +253,44 @@ export default defineComponent({
 
     const deleteRow = (row) =>{
       console.log(row)
+      ElMessageBox.confirm(
+          '请再次确认 ?',
+          {
+            confirmButtonText: '删除',
+            cancelButtonText: '取消',
+            type: 'warning',
+          }
+      )
+          .then(() => {
+            VideoDelete(row).then(res => {
+              dialogVisible.value = false
+              if (res.code !== 200) {
+                ElNotification({
+                  title:res.msg,
+                  type: "error",
+                })
+                return
+              }
+              ElNotification({
+                title:res.msg,
+                type: "success",
+              })
+              videoManageList()
 
-      VideoDelete(row).then(res => {
-        dialogVisible.value = false
-        if (res.code !== 200) {
-          ElNotification({
-            title:res.msg,
-            type: "error",
+            })
+            // ElMessage({
+            //   type: 'success',
+            //   message: '删除成功',
+            // })
           })
-          return
-        }
-        ElNotification({
-          title:res.msg,
-          type: "success",
-        })
-        videoManageList()
+          // .catch(() => {
+          //   ElMessage({
+          //     type: 'info',
+          //     message: '删除失败',
+          //   })
+          // })
 
-      })
+
     }
 
     const addList = () =>{
@@ -299,7 +320,7 @@ export default defineComponent({
           })
           return
         }
-        console.log(res.data)
+        // console.log(res.data)
         modelRef.value.Payload.Number = res.data.Payload.Number
 
       })

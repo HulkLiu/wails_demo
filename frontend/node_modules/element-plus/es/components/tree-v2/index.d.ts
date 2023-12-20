@@ -344,7 +344,7 @@ export declare const ElTreeV2: import("element-plus/es/utils").SFCWithInstall<im
             onToggle?: ((node: import("./src/types").TreeNode) => any) | undefined;
             onCheck?: ((node: import("./src/types").TreeNode, checked: import("..").CheckboxValueType) => any) | undefined;
         }>>;
-        emit: ((event: "click", node: import("./src/types").TreeNode, e: MouseEvent) => void) & ((event: "toggle", node: import("./src/types").TreeNode) => void) & ((event: "check", node: import("./src/types").TreeNode, checked: import("..").CheckboxValueType) => void);
+        emit: ((event: "click", node: import("./src/types").TreeNode, e: MouseEvent) => void) & ((event: "check", node: import("./src/types").TreeNode, checked: import("..").CheckboxValueType) => void) & ((event: "toggle", node: import("./src/types").TreeNode) => void);
         tree: import("./src/types").TreeContext | undefined;
         ns: {
             namespace: import("vue").ComputedRef<string>;

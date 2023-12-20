@@ -9,6 +9,7 @@ import {
   SettingsSharp as SettingIcon,
   Barcode as OcrIcon,
 
+
 } from '@vicons/ionicons5'
 
 import { darkTheme } from 'naive-ui'
@@ -18,6 +19,9 @@ import Login from "./views/Login.vue";
 const renderIcon = (icon) => {
   return () => h(NIcon, null, { default: () => h(icon) });
 }
+
+
+
 const menuOptions =  [
 
   {
@@ -62,8 +66,23 @@ const menuOptions =  [
         { default: () => "视频管理" }
     ),
     key: "视频管理",
-    icon: renderIcon(AboutIcon),
+    icon: renderIcon(OcrIcon),
     path: "/videoList",
+  },
+  {
+    label: () => h(
+        RouterLink,
+        {
+          to: {
+            name: 'task',
+            path: "/task",
+          }
+        },
+        { default: () => "任务管理" }
+    ),
+    key: "任务管理",
+    icon: renderIcon(OcrIcon),
+    path: "/task",
   },
   {
     label: () => h(
@@ -146,7 +165,7 @@ export default {
     const tabPanes = ref([]);
 
     const handleTabClose = (key) => {
-      console.log(key)
+      // console.log(key)
       const index = panels.value.findIndex(tabPane => tabPane.name === key);
       if (index !== -1) {
         panels.value.splice(index, 1);

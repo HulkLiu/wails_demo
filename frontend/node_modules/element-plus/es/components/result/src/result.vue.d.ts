@@ -1,12 +1,12 @@
 declare const _default: import("vue").DefineComponent<{
     readonly title: import("../../../utils").EpPropFinalized<StringConstructor, unknown, unknown, "", boolean>;
     readonly subTitle: import("../../../utils").EpPropFinalized<StringConstructor, unknown, unknown, "", boolean>;
-    readonly icon: import("../../../utils").EpPropFinalized<StringConstructor, "error" | "success" | "warning" | "info", unknown, "info", boolean>;
+    readonly icon: import("../../../utils").EpPropFinalized<StringConstructor, "success" | "warning" | "error" | "info", unknown, "info", boolean>;
 }, {
     props: Readonly<import("@vue/shared").LooseRequired<Readonly<import("vue").ExtractPropTypes<{
         readonly title: import("../../../utils").EpPropFinalized<StringConstructor, unknown, unknown, "", boolean>;
         readonly subTitle: import("../../../utils").EpPropFinalized<StringConstructor, unknown, unknown, "", boolean>;
-        readonly icon: import("../../../utils").EpPropFinalized<StringConstructor, "error" | "success" | "warning" | "info", unknown, "info", boolean>;
+        readonly icon: import("../../../utils").EpPropFinalized<StringConstructor, "success" | "warning" | "error" | "info", unknown, "info", boolean>;
     }>> & {
         [x: string & `on${string}`]: ((...args: any[]) => any) | ((...args: unknown[]) => any) | undefined;
     }>>;
@@ -35,10 +35,10 @@ declare const _default: import("vue").DefineComponent<{
 }, unknown, {}, {}, import("vue").ComponentOptionsMixin, import("vue").ComponentOptionsMixin, Record<string, any>, string, import("vue").VNodeProps & import("vue").AllowedComponentProps & import("vue").ComponentCustomProps, Readonly<import("vue").ExtractPropTypes<{
     readonly title: import("../../../utils").EpPropFinalized<StringConstructor, unknown, unknown, "", boolean>;
     readonly subTitle: import("../../../utils").EpPropFinalized<StringConstructor, unknown, unknown, "", boolean>;
-    readonly icon: import("../../../utils").EpPropFinalized<StringConstructor, "error" | "success" | "warning" | "info", unknown, "info", boolean>;
+    readonly icon: import("../../../utils").EpPropFinalized<StringConstructor, "success" | "warning" | "error" | "info", unknown, "info", boolean>;
 }>>, {
     readonly title: string;
-    readonly icon: import("../../../utils").EpPropMergeType<StringConstructor, "error" | "success" | "warning" | "info", unknown>;
+    readonly icon: import("../../../utils").EpPropMergeType<StringConstructor, "success" | "warning" | "error" | "info", unknown>;
     readonly subTitle: string;
 }>;
 export default _default;

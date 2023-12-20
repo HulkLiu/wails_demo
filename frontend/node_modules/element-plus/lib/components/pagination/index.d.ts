@@ -24,6 +24,7 @@ export declare const ElPagination: import("element-plus/es/utils").SFCWithInstal
     'update:current-page': (val: number) => boolean;
     'update:page-size': (val: number) => boolean;
     'size-change': (val: number) => boolean;
+    change: (currentPage: number, pageSize: number) => boolean;
     'current-change': (val: number) => boolean;
     'prev-click': (val: number) => boolean;
     'next-click': (val: number) => boolean;
@@ -48,6 +49,7 @@ export declare const ElPagination: import("element-plus/es/utils").SFCWithInstal
     readonly disabled: BooleanConstructor;
     readonly hideOnSinglePage: BooleanConstructor;
 }>> & {
+    onChange?: ((currentPage: number, pageSize: number) => any) | undefined;
     "onUpdate:current-page"?: ((val: number) => any) | undefined;
     "onUpdate:page-size"?: ((val: number) => any) | undefined;
     "onSize-change"?: ((val: number) => any) | undefined;

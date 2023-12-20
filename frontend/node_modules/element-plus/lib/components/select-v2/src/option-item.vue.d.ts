@@ -34,7 +34,7 @@ declare const _default: import("vue").DefineComponent<{
     hoverItem: () => void;
     selectOptionClick: () => void;
     getLabel: (option: import("./select.types").Option) => any;
-}, unknown, {}, {}, import("vue").ComponentOptionsMixin, import("vue").ComponentOptionsMixin, ("select" | "hover")[], "select" | "hover", import("vue").VNodeProps & import("vue").AllowedComponentProps & import("vue").ComponentCustomProps, Readonly<import("vue").ExtractPropTypes<{
+}, unknown, {}, {}, import("vue").ComponentOptionsMixin, import("vue").ComponentOptionsMixin, ("hover" | "select")[], "select" | "hover", import("vue").VNodeProps & import("vue").AllowedComponentProps & import("vue").ComponentCustomProps, Readonly<import("vue").ExtractPropTypes<{
     readonly data: ArrayConstructor;
     readonly disabled: BooleanConstructor;
     readonly hovering: BooleanConstructor;

@@ -1,6 +1,6 @@
 import '../../utils/index.mjs';
-import Alert from './src/alert2.mjs';
-export { alertEffects, alertEmits, alertProps } from './src/alert.mjs';
+import Alert from './src/alert.mjs';
+export { alertEffects, alertEmits, alertProps } from './src/alert2.mjs';
 import { withInstall } from '../../utils/vue/install.mjs';
 
 const ElAlert = withInstall(Alert);

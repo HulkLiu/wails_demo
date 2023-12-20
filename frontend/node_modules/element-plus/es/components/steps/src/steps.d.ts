@@ -16,8 +16,8 @@ export declare const stepsProps: {
         readonly validator: ((val: unknown) => boolean) | undefined;
         __epPropKey: true;
     };
-    readonly finishStatus: import("element-plus/es/utils").EpPropFinalized<StringConstructor, "error" | "success" | "wait" | "finish" | "process", unknown, "finish", boolean>;
-    readonly processStatus: import("element-plus/es/utils").EpPropFinalized<StringConstructor, "error" | "success" | "wait" | "finish" | "process", unknown, "process", boolean>;
+    readonly finishStatus: import("element-plus/es/utils").EpPropFinalized<StringConstructor, "success" | "error" | "wait" | "finish" | "process", unknown, "finish", boolean>;
+    readonly processStatus: import("element-plus/es/utils").EpPropFinalized<StringConstructor, "success" | "error" | "wait" | "finish" | "process", unknown, "process", boolean>;
 };
 export declare type StepsProps = ExtractPropTypes<typeof stepsProps>;
 export declare const stepsEmits: {
