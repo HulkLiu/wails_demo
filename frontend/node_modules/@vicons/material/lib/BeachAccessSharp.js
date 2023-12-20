@@ -1,0 +1,25 @@
+'use strict'
+Object.defineProperty(exports, '__esModule', { value: true })
+const vue_1 = require('vue')
+const _hoisted_1 = {
+  xmlns: 'http://www.w3.org/2000/svg',
+  'xmlns:xlink': 'http://www.w3.org/1999/xlink',
+  viewBox: '0 0 24 24'
+}
+const _hoisted_2 = /*#__PURE__*/ (0, vue_1.createElementVNode)(
+  'path',
+  {
+    d: 'M5.95 5.98c-3.94 3.95-3.93 10.35.02 14.3l2.86-2.86C5.7 14.29 4.65 9.91 5.95 5.98zm11.47 2.85l2.86-2.86c-3.95-3.95-10.35-3.96-14.3-.02c3.93-1.3 8.31-.25 11.44 2.88zM5.97 5.96l-.01.01c-.38 3.01 1.17 6.88 4.3 10.02l5.73-5.73c-3.13-3.13-7.01-4.68-10.02-4.3zm7.156 8.6l1.428-1.428l6.442 6.442l-1.43 1.428z',
+    fill: 'currentColor'
+  },
+  null,
+  -1
+  /* HOISTED */
+)
+const _hoisted_3 = [_hoisted_2]
+exports.default = (0, vue_1.defineComponent)({
+  name: 'BeachAccessSharp',
+  render: function render(_ctx, _cache) {
+    return (0, vue_1.openBlock)(), (0, vue_1.createElementBlock)('svg', _hoisted_1, _hoisted_3)
+  }
+})

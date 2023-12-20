@@ -1,0 +1,33 @@
+import { createElementVNode as _createElementVNode, openBlock as _openBlock, createElementBlock as _createElementBlock, defineComponent } from 'vue'
+const _hoisted_1 = {
+  xmlns: 'http://www.w3.org/2000/svg',
+  'xmlns:xlink': 'http://www.w3.org/1999/xlink',
+  viewBox: '0 0 24 24'
+}
+const _hoisted_2 = /*#__PURE__*/ _createElementVNode(
+  'path',
+  {
+    d: 'M4 6H2v14c0 1.1.9 2 2 2h14v-2H4V6z',
+    fill: 'currentColor'
+  },
+  null,
+  -1
+  /* HOISTED */
+)
+const _hoisted_3 = /*#__PURE__*/ _createElementVNode(
+  'path',
+  {
+    d: 'M20 2H8c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm-5.99 13c-.59 0-1.05-.47-1.05-1.05c0-.59.47-1.04 1.05-1.04c.59 0 1.04.45 1.04 1.04c-.01.58-.45 1.05-1.04 1.05zm2.5-6.17c-.63.93-1.23 1.21-1.56 1.81c-.13.24-.18.4-.18 1.18h-1.52c0-.41-.06-1.08.26-1.65c.41-.73 1.18-1.16 1.63-1.8c.48-.68.21-1.94-1.14-1.94c-.88 0-1.32.67-1.5 1.23l-1.37-.57C11.51 5.96 12.52 5 13.99 5c1.23 0 2.08.56 2.51 1.26c.37.61.58 1.73.01 2.57z',
+    fill: 'currentColor'
+  },
+  null,
+  -1
+  /* HOISTED */
+)
+const _hoisted_4 = [_hoisted_2, _hoisted_3]
+export default defineComponent({
+  name: 'QuizFilled',
+  render: function render(_ctx, _cache) {
+    return _openBlock(), _createElementBlock('svg', _hoisted_1, _hoisted_4)
+  }
+})

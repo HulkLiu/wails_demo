@@ -1,0 +1,25 @@
+'use strict'
+Object.defineProperty(exports, '__esModule', { value: true })
+const vue_1 = require('vue')
+const _hoisted_1 = {
+  xmlns: 'http://www.w3.org/2000/svg',
+  'xmlns:xlink': 'http://www.w3.org/1999/xlink',
+  viewBox: '0 0 24 24'
+}
+const _hoisted_2 = /*#__PURE__*/ (0, vue_1.createElementVNode)(
+  'path',
+  {
+    d: 'M12 4.14l6 2.25v4.7c0 1.19-.23 2.36-.64 3.44l1.51 1.51c.72-1.53 1.13-3.22 1.13-4.95V5l-8-3l-5.22 1.96l1.55 1.55L12 4.14zM2.81 2.81L1.39 4.22L4 6.83v4.26c0 5.05 3.41 9.76 8 10.91c1.72-.43 3.28-1.36 4.55-2.62l3.23 3.23l1.41-1.41L2.81 2.81zM12 19.92c-3.45-1.13-6-4.82-6-8.83V8.83l9.14 9.14c-.9.88-1.97 1.57-3.14 1.95z',
+    fill: 'currentColor'
+  },
+  null,
+  -1
+  /* HOISTED */
+)
+const _hoisted_3 = [_hoisted_2]
+exports.default = (0, vue_1.defineComponent)({
+  name: 'RemoveModeratorOutlined',
+  render: function render(_ctx, _cache) {
+    return (0, vue_1.openBlock)(), (0, vue_1.createElementBlock)('svg', _hoisted_1, _hoisted_3)
+  }
+})

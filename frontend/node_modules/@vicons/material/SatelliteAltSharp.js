@@ -1,0 +1,25 @@
+'use strict'
+Object.defineProperty(exports, '__esModule', { value: true })
+const vue_1 = require('vue')
+const _hoisted_1 = {
+  xmlns: 'http://www.w3.org/2000/svg',
+  'xmlns:xlink': 'http://www.w3.org/1999/xlink',
+  viewBox: '0 0 24 24'
+}
+const _hoisted_2 = /*#__PURE__*/ (0, vue_1.createElementVNode)(
+  'path',
+  {
+    d: 'M15.44.59l-3.18 3.18c-.78.78-.78 2.05 0 2.83l1.24 1.24l-.71.71l-2.65-2.65l-4.24 4.24l2.65 2.65l-.71.71l-1.24-1.25c-.78-.78-2.05-.78-2.83 0L.59 15.43c-.78.78-.78 2.05 0 2.83l3.54 3.54c.78.78 2.05.78 2.83 0l3.18-3.18c.78-.78.78-2.05 0-2.83L8.9 14.55l.71-.71l2.65 2.65l4.24-4.24l-2.66-2.65l.71-.71l1.24 1.24c.78.78 2.05.78 2.83 0l3.18-3.18c.78-.78.78-2.05 0-2.83L18.26.58c-.78-.78-2.04-.78-2.82.01zM6.6 19.32l-1.06 1.06L2 16.85l1.06-1.06l3.54 3.53zm2.12-2.12l-1.06 1.06l-3.54-3.54l1.06-1.06l3.54 3.54zm9.54-9.54L17.2 8.72l-3.54-3.54l1.06-1.06l3.54 3.54zm2.12-2.12L19.32 6.6l-3.54-3.54L16.85 2l3.53 3.54zM21 14h2a9 9 0 0 1-9 9v-2c3.87 0 7-3.13 7-7zm-4 0h2c0 2.76-2.24 5-5 5v-2c1.66 0 3-1.34 3-3z',
+    fill: 'currentColor'
+  },
+  null,
+  -1
+  /* HOISTED */
+)
+const _hoisted_3 = [_hoisted_2]
+exports.default = (0, vue_1.defineComponent)({
+  name: 'SatelliteAltSharp',
+  render: function render(_ctx, _cache) {
+    return (0, vue_1.openBlock)(), (0, vue_1.createElementBlock)('svg', _hoisted_1, _hoisted_3)
+  }
+})

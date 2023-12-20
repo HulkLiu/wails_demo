@@ -1,0 +1,34 @@
+import { createElementVNode as _createElementVNode, openBlock as _openBlock, createElementBlock as _createElementBlock, defineComponent } from 'vue'
+const _hoisted_1 = {
+  xmlns: 'http://www.w3.org/2000/svg',
+  'xmlns:xlink': 'http://www.w3.org/1999/xlink',
+  viewBox: '0 0 24 24'
+}
+const _hoisted_2 = /*#__PURE__*/ _createElementVNode(
+  'path',
+  {
+    opacity: '.3',
+    d: 'M8 7.5l4 4l4-4V4H8zm0 9V20h8v-3.5l-4-4z',
+    fill: 'currentColor'
+  },
+  null,
+  -1
+  /* HOISTED */
+)
+const _hoisted_3 = /*#__PURE__*/ _createElementVNode(
+  'path',
+  {
+    d: 'M18 2H6v6h.01L6 8.01L10 12l-4 4l.01.01H6V22h12v-5.99h-.01L18 16l-4-4l4-3.99l-.01-.01H18V2zm-2 14.5V20H8v-3.5l4-4l4 4zm0-9l-4 4l-4-4V4h8v3.5z',
+    fill: 'currentColor'
+  },
+  null,
+  -1
+  /* HOISTED */
+)
+const _hoisted_4 = [_hoisted_2, _hoisted_3]
+export default defineComponent({
+  name: 'HourglassFullTwotone',
+  render: function render(_ctx, _cache) {
+    return _openBlock(), _createElementBlock('svg', _hoisted_1, _hoisted_4)
+  }
+})

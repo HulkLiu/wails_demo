@@ -1,0 +1,23 @@
+import { createElementVNode as _createElementVNode, openBlock as _openBlock, createElementBlock as _createElementBlock, defineComponent } from 'vue'
+const _hoisted_1 = {
+  xmlns: 'http://www.w3.org/2000/svg',
+  'xmlns:xlink': 'http://www.w3.org/1999/xlink',
+  viewBox: '0 0 24 24'
+}
+const _hoisted_2 = /*#__PURE__*/ _createElementVNode(
+  'path',
+  {
+    d: 'M15 8h4v4h-1v2c0 .34-.08.66-.23.94L16 13.17V12h-1V8zm-4 .17l2 2V6h2l-3-4l-3 4h2v2.17zM13 16v2.28c.6.34 1 .98 1 1.72c0 1.1-.9 2-2 2s-2-.9-2-2c0-.74.4-1.37 1-1.72V16H8c-1.11 0-2-.89-2-2v-2.28c-.6-.34-1-.98-1-1.72c0-.59.26-1.13.68-1.49L1.39 4.22L2.8 2.81l18.38 18.38l-1.41 1.41l-6.6-6.6H13zm-2-2v-.17l-2.51-2.51c-.14.16-.31.29-.49.4V14h3z',
+    fill: 'currentColor'
+  },
+  null,
+  -1
+  /* HOISTED */
+)
+const _hoisted_3 = [_hoisted_2]
+export default defineComponent({
+  name: 'UsbOffFilled',
+  render: function render(_ctx, _cache) {
+    return _openBlock(), _createElementBlock('svg', _hoisted_1, _hoisted_3)
+  }
+})

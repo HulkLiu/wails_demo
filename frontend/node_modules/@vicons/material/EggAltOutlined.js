@@ -1,0 +1,37 @@
+'use strict'
+Object.defineProperty(exports, '__esModule', { value: true })
+const vue_1 = require('vue')
+const _hoisted_1 = {
+  xmlns: 'http://www.w3.org/2000/svg',
+  'xmlns:xlink': 'http://www.w3.org/1999/xlink',
+  viewBox: '0 0 24 24'
+}
+const _hoisted_2 = /*#__PURE__*/ (0, vue_1.createElementVNode)(
+  'path',
+  {
+    d: 'M19 9c-2-2-3.01-7-9.03-7C4.95 2 1.94 6 2 11.52C2.06 17.04 6.96 19 9.97 19c2.01 0 2.01 3 6.02 3C19 22 22 19 22 15.02C22 12 21.01 11 19 9zm-3.01 11c-1.49 0-1.96-.5-2.68-1.26c-.65-.69-1.65-1.74-3.34-1.74c-1.64 0-5.92-.99-5.97-5.5c-.03-2.51.68-4.62 1.99-5.95C7.01 4.52 8.35 4 9.97 4c3.34 0 4.51 1.86 5.86 4.02c.55.88 1.07 1.71 1.76 2.39c1.9 1.89 2.41 2.4 2.41 4.61c0 2.85-2.12 4.98-4.01 4.98z',
+    fill: 'currentColor'
+  },
+  null,
+  -1
+  /* HOISTED */
+)
+const _hoisted_3 = /*#__PURE__*/ (0, vue_1.createElementVNode)(
+  'circle',
+  {
+    cx: '12',
+    cy: '12',
+    r: '3.5',
+    fill: 'currentColor'
+  },
+  null,
+  -1
+  /* HOISTED */
+)
+const _hoisted_4 = [_hoisted_2, _hoisted_3]
+exports.default = (0, vue_1.defineComponent)({
+  name: 'EggAltOutlined',
+  render: function render(_ctx, _cache) {
+    return (0, vue_1.openBlock)(), (0, vue_1.createElementBlock)('svg', _hoisted_1, _hoisted_4)
+  }
+})

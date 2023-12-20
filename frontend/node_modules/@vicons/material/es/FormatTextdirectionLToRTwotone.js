@@ -1,0 +1,34 @@
+import { createElementVNode as _createElementVNode, openBlock as _openBlock, createElementBlock as _createElementBlock, defineComponent } from 'vue'
+const _hoisted_1 = {
+  xmlns: 'http://www.w3.org/2000/svg',
+  'xmlns:xlink': 'http://www.w3.org/1999/xlink',
+  viewBox: '0 0 24 24'
+}
+const _hoisted_2 = /*#__PURE__*/ _createElementVNode(
+  'path',
+  {
+    opacity: '.3',
+    d: 'M9 8V4c-1.1 0-2 .9-2 2s.9 2 2 2z',
+    fill: 'currentColor'
+  },
+  null,
+  -1
+  /* HOISTED */
+)
+const _hoisted_3 = /*#__PURE__*/ _createElementVNode(
+  'path',
+  {
+    d: 'M9 10v5h2V4h2v11h2V4h2V2H9C6.79 2 5 3.79 5 6s1.79 4 4 4zm0-6v4c-1.1 0-2-.9-2-2s.9-2 2-2zm12 14l-4-4v3H5v2h12v3z',
+    fill: 'currentColor'
+  },
+  null,
+  -1
+  /* HOISTED */
+)
+const _hoisted_4 = [_hoisted_2, _hoisted_3]
+export default defineComponent({
+  name: 'FormatTextdirectionLToRTwotone',
+  render: function render(_ctx, _cache) {
+    return _openBlock(), _createElementBlock('svg', _hoisted_1, _hoisted_4)
+  }
+})

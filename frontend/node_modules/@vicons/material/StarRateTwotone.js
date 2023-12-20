@@ -1,0 +1,36 @@
+'use strict'
+Object.defineProperty(exports, '__esModule', { value: true })
+const vue_1 = require('vue')
+const _hoisted_1 = {
+  xmlns: 'http://www.w3.org/2000/svg',
+  'xmlns:xlink': 'http://www.w3.org/1999/xlink',
+  viewBox: '0 0 24 24'
+}
+const _hoisted_2 = /*#__PURE__*/ (0, vue_1.createElementVNode)(
+  'path',
+  {
+    opacity: '.3',
+    d: 'M12.94 12L12 8.89L11.06 12H8.24l2.27 1.62l-.93 3.01L12 14.79l2.42 1.84l-.93-3.01L15.76 12z',
+    fill: 'currentColor'
+  },
+  null,
+  -1
+  /* HOISTED */
+)
+const _hoisted_3 = /*#__PURE__*/ (0, vue_1.createElementVNode)(
+  'path',
+  {
+    d: 'M22 10h-7.58L12 2l-2.42 8H2l6.17 4.41L5.83 22L12 17.31L18.17 22l-2.35-7.59L22 10zm-7.58 6.63L12 14.79l-2.42 1.84l.93-3.01L8.24 12h2.82L12 8.89l.94 3.11h2.82l-2.27 1.62l.93 3.01z',
+    fill: 'currentColor'
+  },
+  null,
+  -1
+  /* HOISTED */
+)
+const _hoisted_4 = [_hoisted_2, _hoisted_3]
+exports.default = (0, vue_1.defineComponent)({
+  name: 'StarRateTwotone',
+  render: function render(_ctx, _cache) {
+    return (0, vue_1.openBlock)(), (0, vue_1.createElementBlock)('svg', _hoisted_1, _hoisted_4)
+  }
+})

@@ -1,0 +1,23 @@
+import { createElementVNode as _createElementVNode, openBlock as _openBlock, createElementBlock as _createElementBlock, defineComponent } from 'vue'
+const _hoisted_1 = {
+  xmlns: 'http://www.w3.org/2000/svg',
+  'xmlns:xlink': 'http://www.w3.org/1999/xlink',
+  viewBox: '0 0 24 24'
+}
+const _hoisted_2 = /*#__PURE__*/ _createElementVNode(
+  'path',
+  {
+    d: 'M14 10v-.18l2.01 2.01l5.23-2.44l-.63-1.36l-4.28 2L14 7.7V6.3l2.33-2.33l4.28 2l.63-1.36l-5.23-2.44L14 4.18V4h-2v2H8.82C8.4 4.84 7.3 4 6 4C4.34 4 3 5.34 3 7c0 1.1.6 2.05 1.48 2.58L7.08 18H4v3h13v-3h-3.62L8.41 8.76c.17-.23.31-.48.41-.76H12v2h2zM6 8c-.55 0-1-.45-1-1s.45-1 1-1s1 .45 1 1s-.45 1-1 1z',
+    fill: 'currentColor'
+  },
+  null,
+  -1
+  /* HOISTED */
+)
+const _hoisted_3 = [_hoisted_2]
+export default defineComponent({
+  name: 'PrecisionManufacturingSharp',
+  render: function render(_ctx, _cache) {
+    return _openBlock(), _createElementBlock('svg', _hoisted_1, _hoisted_3)
+  }
+})

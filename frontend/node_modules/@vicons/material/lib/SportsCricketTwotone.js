@@ -1,0 +1,49 @@
+'use strict'
+Object.defineProperty(exports, '__esModule', { value: true })
+const vue_1 = require('vue')
+const _hoisted_1 = {
+  xmlns: 'http://www.w3.org/2000/svg',
+  'xmlns:xlink': 'http://www.w3.org/1999/xlink',
+  viewBox: '0 0 24 24'
+}
+const _hoisted_2 = /*#__PURE__*/ (0, vue_1.createElementVNode)(
+  'path',
+  {
+    opacity: '.3',
+    d: 'M4.414 7.84l1.421-1.422l7.085 7.085l-1.42 1.422z',
+    fill: 'currentColor'
+  },
+  null,
+  -1
+  /* HOISTED */
+)
+const _hoisted_3 = /*#__PURE__*/ (0, vue_1.createElementVNode)(
+  'circle',
+  {
+    cx: '18.5',
+    cy: '5.5',
+    opacity: '.3',
+    r: '1.5',
+    fill: 'currentColor'
+  },
+  null,
+  -1
+  /* HOISTED */
+)
+const _hoisted_4 = /*#__PURE__*/ (0, vue_1.createElementVNode)(
+  'path',
+  {
+    d: 'M15.04 12.79l-8.5-8.5C6.35 4.1 6.09 4 5.83 4s-.51.1-.7.29L2.29 7.13c-.39.39-.39 1.03 0 1.42l8.5 8.5c.2.2.45.29.71.29c.26 0 .51-.1.71-.29l2.83-2.83c.39-.4.39-1.04 0-1.43zm-3.54 2.13L4.41 7.83l1.42-1.42l7.09 7.09l-1.42 1.42zm2.841 2.836l1.414-1.414l4.243 4.243l-1.414 1.414zM18.5 2C16.57 2 15 3.57 15 5.5S16.57 9 18.5 9S22 7.43 22 5.5S20.43 2 18.5 2zm0 5c-.83 0-1.5-.67-1.5-1.5S17.67 4 18.5 4s1.5.67 1.5 1.5S19.33 7 18.5 7z',
+    fill: 'currentColor'
+  },
+  null,
+  -1
+  /* HOISTED */
+)
+const _hoisted_5 = [_hoisted_2, _hoisted_3, _hoisted_4]
+exports.default = (0, vue_1.defineComponent)({
+  name: 'SportsCricketTwotone',
+  render: function render(_ctx, _cache) {
+    return (0, vue_1.openBlock)(), (0, vue_1.createElementBlock)('svg', _hoisted_1, _hoisted_5)
+  }
+})

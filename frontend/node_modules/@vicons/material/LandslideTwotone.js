@@ -1,0 +1,36 @@
+'use strict'
+Object.defineProperty(exports, '__esModule', { value: true })
+const vue_1 = require('vue')
+const _hoisted_1 = {
+  xmlns: 'http://www.w3.org/2000/svg',
+  'xmlns:xlink': 'http://www.w3.org/1999/xlink',
+  viewBox: '0 0 24 24'
+}
+const _hoisted_2 = /*#__PURE__*/ (0, vue_1.createElementVNode)(
+  'path',
+  {
+    opacity: '.3',
+    d: 'M8.57 12.09L7 10H4v2.28l2 .67zm3.96 2.68l-2.58-1.03L6 15.05l-2-.66v1.89l2 .67zM15 4.65V2.64l-2.58-.52l-1.42.95v1.86l1.23.82zm-9 14.4l-2-.66V20h14l-2.97-3.96zm12-9.09v1.08l.8.64l2.2-.98V9.6l-2-.44z',
+    fill: 'currentColor'
+  },
+  null,
+  -1
+  /* HOISTED */
+)
+const _hoisted_3 = /*#__PURE__*/ (0, vue_1.createElementVNode)(
+  'path',
+  {
+    d: 'M11 12L8 8H2v14h20l-6-8l-5-2zm-7-2h3l1.57 2.09l-2.57.86l-2-.67V10zm0 4.39l2 .67l3.95-1.32l2.58 1.03L6 16.95l-2-.67v-1.89zM4 20v-1.61l2 .67l9.03-3.01L18 20H4zM17 6V1l-5-1l-3 2v4l3 2l5-2zm-6-2.93l1.42-.95l2.58.52v2.01l-2.77 1.11L11 4.93V3.07zM18.5 7L16 9v3l2.5 2l4.5-2V8l-4.5-1zm2.5 3.7l-2.2.98l-.8-.64V9.96l1-.8l2 .44v1.1z',
+    fill: 'currentColor'
+  },
+  null,
+  -1
+  /* HOISTED */
+)
+const _hoisted_4 = [_hoisted_2, _hoisted_3]
+exports.default = (0, vue_1.defineComponent)({
+  name: 'LandslideTwotone',
+  render: function render(_ctx, _cache) {
+    return (0, vue_1.openBlock)(), (0, vue_1.createElementBlock)('svg', _hoisted_1, _hoisted_4)
+  }
+})

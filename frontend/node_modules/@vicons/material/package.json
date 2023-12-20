@@ -1,0 +1,19 @@
+{
+  "name": "@vicons/material",
+  "version": "0.12.0",
+  "description": "Vue3 SVG icon components integrated from [`material-design-icons`](https://github.com/google/material-design-icons)",
+  "keywords": [
+    "icon",
+    "vue-next",
+    "vue",
+    "svg",
+    "material"
+  ],
+  "author": "07akioni",
+  "license": "Apache 2.0",
+  "dependencies": {},
+  "sideEffects": false,
+  "main": "lib/index.js",
+  "module": "es/index.js",
+  "types": "es/index.d.ts"
+}

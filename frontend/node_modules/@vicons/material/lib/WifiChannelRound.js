@@ -1,0 +1,25 @@
+'use strict'
+Object.defineProperty(exports, '__esModule', { value: true })
+const vue_1 = require('vue')
+const _hoisted_1 = {
+  xmlns: 'http://www.w3.org/2000/svg',
+  'xmlns:xlink': 'http://www.w3.org/1999/xlink',
+  viewBox: '0 0 24 24'
+}
+const _hoisted_2 = /*#__PURE__*/ (0, vue_1.createElementVNode)(
+  'path',
+  {
+    d: 'M4.13 21c.5 0 .92-.38.99-.87c.65-4.89 1.95-9.01 2.88-10c.91.98 2.19 5.01 2.86 9.82c.08.6.59 1.05 1.19 1.05c.54 0 1.02-.36 1.16-.89c.62-2.38 1.9-5.11 2.79-5.11c.9 0 2.19 2.83 2.81 5.2c.12.48.56.8 1.05.8c.62 0 1.12-.52 1.09-1.14C20.75 15.89 19.81 3 16 3c-2.51 0-3.77 5.61-4.4 10.57C10.79 10.66 9.61 8 8 8c-2.92 0-4.41 8.71-4.85 11.87c-.09.6.38 1.13.98 1.13zM16 13c-.99 0-1.82.62-2.5 1.5c.57-4.77 1.54-8.62 2.5-9.44c.97.81 1.91 4.67 2.49 9.43C17.81 13.62 16.98 13 16 13z',
+    fill: 'currentColor'
+  },
+  null,
+  -1
+  /* HOISTED */
+)
+const _hoisted_3 = [_hoisted_2]
+exports.default = (0, vue_1.defineComponent)({
+  name: 'WifiChannelRound',
+  render: function render(_ctx, _cache) {
+    return (0, vue_1.openBlock)(), (0, vue_1.createElementBlock)('svg', _hoisted_1, _hoisted_3)
+  }
+})

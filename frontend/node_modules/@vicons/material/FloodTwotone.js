@@ -1,0 +1,36 @@
+'use strict'
+Object.defineProperty(exports, '__esModule', { value: true })
+const vue_1 = require('vue')
+const _hoisted_1 = {
+  xmlns: 'http://www.w3.org/2000/svg',
+  'xmlns:xlink': 'http://www.w3.org/1999/xlink',
+  viewBox: '0 0 24 24'
+}
+const _hoisted_2 = /*#__PURE__*/ (0, vue_1.createElementVNode)(
+  'path',
+  {
+    opacity: '.3',
+    d: 'M8.66 15.5c1.01 0 1.3-.65 2.42-.9l-.91-3.39l3.86-1.04l1.42 5.31c1.03-.07 1.3-.85 2.85-.96L16.16 6.5l-5.74-2.09L6.5 9.09l1.7 6.36c.13.03.28.05.46.05z',
+    fill: 'currentColor'
+  },
+  null,
+  -1
+  /* HOISTED */
+)
+const _hoisted_3 = /*#__PURE__*/ (0, vue_1.createElementVNode)(
+  'path',
+  {
+    d: 'M18.67 19c-1.95 0-2.09 1-3.33 1c-1.19 0-1.42-1-3.33-1c-1.95 0-2.1 1-3.34 1c-1.24 0-1.38-1-3.33-1c-1.95 0-2.1 1-3.34 1v2c1.95 0 2.11-1 3.34-1c1.24 0 1.38 1 3.33 1c1.95 0 2.1-1 3.34-1c1.22 0 1.4 1 3.33 1c1.93 0 2.1-1 3.33-1c1.22 0 1.4 1 3.33 1v-2c-1.24 0-1.38-1-3.33-1zm-9.99-1.5c1.95 0 2.09-1 3.33-1c1.19 0 1.42 1 3.33 1c1.95 0 2.09-1 3.33-1c1.19 0 1.4.98 3.31 1v-2c-.63 0-1-.28-1.48-.55l-2.02-7.53l2.09.85l.74-1.86L9.78 2L2 11.61l1.57 1.23l1.39-1.78l.93 3.48c-.18-.02-.35-.05-.56-.05c-1.95 0-2.09 1-3.33 1v2c1.9 0 2.17-1 3.35-1c1.19.01 1.42 1.01 3.33 1.01zm1.74-13.09l5.74 2.09l2.15 8.02c-1.54.11-1.82.89-2.85.96l-1.42-5.31l-3.86 1.04l.91 3.39c-1.12.25-1.41.9-2.42.9c-.18 0-.33-.02-.45-.05L6.5 9.09l3.92-4.68z',
+    fill: 'currentColor'
+  },
+  null,
+  -1
+  /* HOISTED */
+)
+const _hoisted_4 = [_hoisted_2, _hoisted_3]
+exports.default = (0, vue_1.defineComponent)({
+  name: 'FloodTwotone',
+  render: function render(_ctx, _cache) {
+    return (0, vue_1.openBlock)(), (0, vue_1.createElementBlock)('svg', _hoisted_1, _hoisted_4)
+  }
+})

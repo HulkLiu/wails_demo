@@ -1,0 +1,58 @@
+import { createElementVNode as _createElementVNode, openBlock as _openBlock, createElementBlock as _createElementBlock, defineComponent } from 'vue'
+const _hoisted_1 = {
+  xmlns: 'http://www.w3.org/2000/svg',
+  'xmlns:xlink': 'http://www.w3.org/1999/xlink',
+  viewBox: '0 0 24 24'
+}
+const _hoisted_2 = /*#__PURE__*/ _createElementVNode(
+  'path',
+  {
+    opacity: '.3',
+    d: 'M17.5 8c.46 0 .91-.05 1.34-.12C17.44 5.56 14.9 4 12 4c-.46 0-.91.05-1.34.12C12.06 6.44 14.6 8 17.5 8zM8.08 5.03a8.046 8.046 0 0 0-3.66 4.44a8.046 8.046 0 0 0 3.66-4.44z',
+    fill: 'currentColor'
+  },
+  null,
+  -1
+  /* HOISTED */
+)
+const _hoisted_3 = /*#__PURE__*/ _createElementVNode(
+  'path',
+  {
+    d: 'M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10s10-4.48 10-10S17.52 2 12 2zm0 2c2.9 0 5.44 1.56 6.84 3.88c-.43.07-.88.12-1.34.12c-2.9 0-5.44-1.56-6.84-3.88c.43-.07.88-.12 1.34-.12zM8.08 5.03a8.046 8.046 0 0 1-3.66 4.44a8.046 8.046 0 0 1 3.66-4.44zM12 20c-4.41 0-8-3.59-8-8c0-.05.01-.1.01-.15c2.6-.98 4.68-2.99 5.74-5.55a9.942 9.942 0 0 0 9.92 3.46c.21.71.33 1.46.33 2.24c0 4.41-3.59 8-8 8z',
+    fill: 'currentColor'
+  },
+  null,
+  -1
+  /* HOISTED */
+)
+const _hoisted_4 = /*#__PURE__*/ _createElementVNode(
+  'circle',
+  {
+    cx: '9',
+    cy: '13',
+    r: '1.25',
+    fill: 'currentColor'
+  },
+  null,
+  -1
+  /* HOISTED */
+)
+const _hoisted_5 = /*#__PURE__*/ _createElementVNode(
+  'circle',
+  {
+    cx: '15',
+    cy: '13',
+    r: '1.25',
+    fill: 'currentColor'
+  },
+  null,
+  -1
+  /* HOISTED */
+)
+const _hoisted_6 = [_hoisted_2, _hoisted_3, _hoisted_4, _hoisted_5]
+export default defineComponent({
+  name: 'FaceTwotone',
+  render: function render(_ctx, _cache) {
+    return _openBlock(), _createElementBlock('svg', _hoisted_1, _hoisted_6)
+  }
+})

@@ -1,0 +1,25 @@
+'use strict'
+Object.defineProperty(exports, '__esModule', { value: true })
+const vue_1 = require('vue')
+const _hoisted_1 = {
+  xmlns: 'http://www.w3.org/2000/svg',
+  'xmlns:xlink': 'http://www.w3.org/1999/xlink',
+  viewBox: '0 0 24 24'
+}
+const _hoisted_2 = /*#__PURE__*/ (0, vue_1.createElementVNode)(
+  'path',
+  {
+    d: 'M20 7V6h-2v1h-2v11h6V7zM5.38 16.5c-1.04 0-1.88-.84-1.88-1.87V10H6V6H4c-1.1 0-2 .9-2 2v6.63C2 16.49 3.51 18 5.37 18s3.37-1.51 3.37-3.37V9.37c0-1.04.84-1.87 1.87-1.87c1.04 0 1.87.84 1.87 1.87V14H10v4h2c1.1 0 2-.9 2-2V9.37C14 7.51 12.49 6 10.63 6C8.76 6 7.25 7.51 7.25 9.37v5.25c0 1.04-.84 1.88-1.87 1.88z',
+    fill: 'currentColor'
+  },
+  null,
+  -1
+  /* HOISTED */
+)
+const _hoisted_3 = [_hoisted_2]
+exports.default = (0, vue_1.defineComponent)({
+  name: 'EarbudsBatterySharp',
+  render: function render(_ctx, _cache) {
+    return (0, vue_1.openBlock)(), (0, vue_1.createElementBlock)('svg', _hoisted_1, _hoisted_3)
+  }
+})
