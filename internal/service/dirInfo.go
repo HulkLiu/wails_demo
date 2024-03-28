@@ -3,6 +3,7 @@ package service
 import (
 	"fmt"
 	"github.com/evercyan/brick/xfile"
+	"github.com/shirou/gopsutil/disk"
 	"gopkg.in/yaml.v3"
 	"log"
 	"math"
@@ -12,9 +13,20 @@ import (
 )
 
 type DirInfo struct {
-	Filed []string
-	Count []int64
-	Size  []string
+	Filed       []string
+	Count       []int64
+	Size        []string
+	UseInfo     Use
+	DirSizeInfo []DirSizeInfo
+}
+type DirSizeInfo struct {
+	Name  string `json:"name"`
+	Value int64  `json:"value"`
+}
+type Use struct {
+	UsedPercent string
+	Free        string
+	Total       string
 }
 type FileStat struct {
 	Ext   string
@@ -53,9 +65,19 @@ func PutDirInfoDesk(data DirInfo, dirPath string) error {
 
 func GetDirInfo(directory string) DirInfo {
 	var dirInfo DirInfo
-	fileStats := make(map[string]FileStat)
+	var res = make([]DirSizeInfo, 0)
+	folderSizes := make([]DirSizeInfo, 0)
 
-	err := filepath.Walk(directory, func(path string, info os.FileInfo, err error) error {
+	fileStats := make(map[string]FileStat)
+	//磁盘使用情况
+	usage, err := disk.Usage(directory)
+	if err != nil {
+		log.Printf("获取磁盘使用情况失败: %v", err)
+		return dirInfo
+	}
+
+	err = filepath.Walk(directory, func(path string, info os.FileInfo, err error) error {
+		//window 隐藏文件处理
 		if err != nil {
 			if os.IsPermission(err) {
 				fmt.Printf("Error: Permission denied to access %s\n", path)
@@ -67,6 +89,7 @@ func GetDirInfo(directory string) DirInfo {
 		}
 
 		if !info.IsDir() {
+			//获取文件夹下的文件后缀名数组
 			ext := filepath.Ext(path)
 			size := info.Size()
 
@@ -75,6 +98,19 @@ func GetDirInfo(directory string) DirInfo {
 			} else {
 				fileStats[ext] = FileStat{Ext: ext, Count: fileStats[ext].Count + 1, Size: fileStats[ext].Size + size}
 			}
+
+		}
+
+		if info.IsDir() && path != directory { // 获取变量二级文件夹大小
+			dirSize := calculateDirSize(path)
+			//fmt.Printf("文件夹路径: %s, 容量大小: %d 字节\n", path, dirSize)
+			//tmp := DirSizeInfo{
+			//	Name:  path,
+			//	Value: dirSize,
+			//}
+			folderSizes = append(folderSizes, DirSizeInfo{Name: path, Value: dirSize})
+
+			//res = append(res, tmp)
 		}
 
 		return nil
@@ -107,10 +143,50 @@ func GetDirInfo(directory string) DirInfo {
 		count = append(count, stat.Count)
 		size = append(size, formatSize_MB(stat.Size))
 	}
+
+	//-------------------------------------------------
+
+	// 按容量大小排序
+	sort.Slice(folderSizes, func(i, j int) bool {
+		return folderSizes[i].Value > folderSizes[j].Value
+	})
+
+	// 输出前5个文件夹容量大小
+	//fmt.Println("前5个文件夹容量大小：")
+	for i := 0; i < 5 && i < len(folderSizes); i++ {
+		//fmt.Printf("文件夹路径: %s, 容量大小: %d 字节\n", folderSizes[i].Name, folderSizes[i].Value)
+		res = append(res, folderSizes[i])
+	}
+
+	// 输出剩余文件夹容量大小
+	otherSize := int64(0)
+	if len(folderSizes) > 5 {
+		for i := 5; i < len(folderSizes); i++ {
+			otherSize += folderSizes[i].Value
+		}
+		res = append(res, DirSizeInfo{
+			Name:  "otherTotalSize",
+			Value: otherSize,
+		})
+
+		//fmt.Printf("剩余文件夹容量大小: %d 字节\n", otherSize)
+	}
+
+	res = append(res, DirSizeInfo{
+		Name:  "freeSize",
+		Value: int64(usage.Free),
+	})
+
 	dirInfo = DirInfo{
 		Filed: filed,
 		Count: count,
 		Size:  size,
+		UseInfo: Use{
+			Total:       fmt.Sprintf("磁盘总容量: %.2f GB\n", float64(usage.Total)/1024/1024/1024),
+			UsedPercent: fmt.Sprintf("磁盘使用占比: %.2f%%\n", usage.UsedPercent),
+			Free:        fmt.Sprintf("剩余磁盘容量: %.2f GB\n", float64(usage.Free)/1024/1024/1024),
+		},
+		DirSizeInfo: res,
 	}
 	return dirInfo
 }
@@ -120,6 +196,26 @@ type MathData struct {
 	min    float64
 	avg    float64
 	median float64
+}
+
+// 计算文件夹大小
+func calculateDirSize(dirPath string) int64 {
+	var size int64
+	err := filepath.Walk(dirPath, func(path string, info os.FileInfo, err error) error {
+		if err != nil {
+			fmt.Println("遍历文件夹失败:", err)
+			return nil
+		}
+		if !info.IsDir() {
+			size += info.Size()
+		}
+		return nil
+	})
+	if err != nil {
+		fmt.Println("遍历文件夹失败:", err)
+		return 0
+	}
+	return size
 }
 
 func getBasicData(numbers []float64) MathData {

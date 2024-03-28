@@ -80,18 +80,13 @@ func (v *VideoManage) GetInfo() VideoTotalInfo {
 	_ = json.Unmarshal(jsonData, &items)
 
 	videoTypeCount := make(map[string]int)
-	log.Printf("GetInfo:%v", len(items))
+
 	for _, item := range items {
 		videoType := item.Payload.VideoType
 		videoTypeCount[videoType]++
 	}
 	total.Type = videoTypeCount
 
-	//var m = make(map[string]int)
-	//for _, val := range data {
-	//	val.
-	//}
-	//total.Type
 	return total
 }
 

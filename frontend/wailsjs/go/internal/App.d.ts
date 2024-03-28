@@ -3,7 +3,8 @@
 import {utils} from '../models';
 import {define} from '../models';
 import {menu} from '../models';
-import {service} from '../models';
+
+export function AddTask(arg1:string):Promise<utils.Response>;
 
 export function BatchUploadFile():Promise<utils.Response>;
 
@@ -11,7 +12,11 @@ export function CheckFile(arg1:string):Promise<void>;
 
 export function ConfigEdit(arg1:define.M):Promise<define.H>;
 
+export function DeleteTask(arg1:string):Promise<utils.Response>;
+
 export function ExportVideoList(arg1:string):Promise<define.H>;
+
+export function FilterTasks(arg1:string):Promise<utils.Response>;
 
 export function GetConfig():Promise<utils.Response>;
 
@@ -19,11 +24,11 @@ export function GetHomeInfo():Promise<define.M>;
 
 export function GetSettingList():Promise<define.H>;
 
+export function GetTaskList():Promise<utils.Response>;
+
 export function Greet(arg1:string):Promise<string>;
 
 export function Menu():Promise<menu.Menu>;
-
-export function NewVideo():Promise<service.VideoManage>;
 
 export function OpenFolder(arg1:string):Promise<define.H>;
 
@@ -32,6 +37,8 @@ export function SearchKey(arg1:define.M):Promise<define.H>;
 export function SetConfig(arg1:string):Promise<utils.Response>;
 
 export function UpdateSettingList(arg1:any):Promise<define.H>;
+
+export function UpdateTask(arg1:string):Promise<utils.Response>;
 
 export function Upload(arg1:string,arg2:Array<boolean>):Promise<string>;
 

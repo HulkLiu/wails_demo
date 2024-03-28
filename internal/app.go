@@ -31,16 +31,24 @@ type App struct {
 	Log   *logrus.Logger
 	Login *service.Login
 
-	DB      *gorm.DB //LoginDB
+	AppPath *AppPath
+
+	DB *gorm.DB //LoginDB
+
+	Vm   *service.VideoManage
+	Info AppInfo
+
+	set        SettingManage
+	taskManage service.TaskManager
+}
+
+type AppPath struct {
+	CfgPath string
 	CfgFile string
 	LogFile string
 	DBFile  string
-
-	Vm   service.VideoManage
-	Info AppInfo
-
-	set SettingManage
 }
+
 type AppInfo struct {
 	Video service.VideoTotalInfo
 	User  []service.LoginInfo
@@ -51,77 +59,22 @@ func NewApp() *App {
 	return &App{}
 }
 
-func (a *App) OnStartup(ctx context.Context) {
-	a.Ctx = ctx
-	//res, _ := service.CmdDockerStart()
+var (
+	ContainerID           = "71b0a4b9b297c10500a33588579a8426b3db47b5f6c1af152664dca8dea29c91"
+	DockerDesktopStarted  = make(chan bool)
+	DockerDesktopStarted2 = make(chan bool)
+)
 
-	//路径等配置项----------------------------------------------------
-	a.set = NewSet()
-	// 初始化 initEsData 和视频部分 ----------------------------------------------------
-	a.Vm = a.NewVideo()
-	fmt.Printf("%v - %v", &a.set.Data.Bak.EsIndex, a.Vm.ElasticIndex)
-	//----------------------------------------------------
-	cfgPath := utils.GetCfgPath()
-	// 日志
-	a.LogFile = fmt.Sprintf(config.LogFile, cfgPath)
-	a.Log = utils.NewLogger(a.LogFile)
-	a.Log.Info("OnStartup begin")
-
-	//login 信息
-	a.CfgFile = fmt.Sprintf(config.CfgFile, cfgPath)
-	a.Login = &service.Login{}
-	if err := yaml.Unmarshal([]byte(xfile.Read(a.CfgFile)), a.Login); err != nil {
-		a.Log.Errorf("OnStartup cfgfile err: %v", err)
-	}
-
-	// 数据库文件
-	a.DBFile = fmt.Sprintf(config.DBFile, cfgPath)
-	a.database()
-
-	//home 用户信息
-	fileList := make([]service.LoginInfo, 0)
-	a.DB.Find(&fileList)
-	a.Info.User = fileList
-
-	//文件信息
-
-	// CfgDirInfo 缓存到本地
-	dirPath := fmt.Sprintf(config.CfgDirInfo, cfgPath)
-
-	// CfgDirInfo 读配置
-	list := service.DirInfo{}
-	if err := yaml.Unmarshal([]byte(xfile.Read(dirPath)), &list); err != nil {
-		// CfgDirInfo 信息
-		a.Info.Dir = service.GetDirInfo(config.HomeInfoDir)
-		if err = service.PutDirInfoDesk(a.Info.Dir, dirPath); err != nil {
-			log.Printf(" dirPath Unmarshal failed,err: %v", err)
-		}
-	} else {
-		//读取成功后 将值返回
-		a.Info.Dir = list
-	}
-
-	return
-
-}
-
-func (a *App) NewVideo() service.VideoManage {
-	var data = service.VideoManage{}
-
-	//res, err := service.CmdEsRun()
-	//if err != nil {
-	//	log.Fatal("CmdEsRun failed,err:%v", err)
-	//}
+func initEs() *service.VideoManage {
 
 	client, err := elastic.NewClient(elastic.SetSniff(false))
 	if err != nil {
 		if err != nil {
-			logger.Printf("initEsData connect failed,err:%v", err)
-			return data
+			log.Fatal(err)
 		}
 	}
-	data = service.VideoManage{
-		ElasticIndex:     a.set.Data.Bak.EsIndex,
+	data := service.VideoManage{
+		ElasticIndex:     config.EsIndex,
 		Client:           client,
 		Err:              nil,
 		PageSize:         10,
@@ -129,16 +82,88 @@ func (a *App) NewVideo() service.VideoManage {
 	}
 	data.TotalInfo = data.GetInfo()
 
-	return data
+	return &data
 }
+
+func (a *App) InitPath() {
+	a.AppPath.CfgPath = utils.GetCfgPath()
+	a.AppPath.LogFile = fmt.Sprintf(config.LogFile, a.AppPath.CfgPath)
+	a.AppPath.CfgFile = fmt.Sprintf(config.CfgFile, a.AppPath.CfgPath)
+	a.AppPath.DBFile = fmt.Sprintf(config.DBFile, a.AppPath.CfgPath)
+
+}
+
+func (a *App) OnStartup(ctx context.Context) {
+	a.Ctx = ctx
+
+	//初始化Path信息
+	a.InitPath()
+
+	//设置管理
+	a.set = NewSet(a.AppPath.CfgPath)
+
+	//初始化 Es
+	a.Vm = initEs()
+
+	// 日志
+	a.Log = utils.NewLogger(a.AppPath.LogFile)
+
+	//login 信息
+	a.Login = &service.Login{}
+	if err := yaml.Unmarshal([]byte(xfile.Read(a.AppPath.CfgFile)), a.Login); err != nil {
+		a.Log.Errorf("OnStartup cfgfile err: %v", err)
+	}
+
+	// init sqlite
+	a.database()
+
+	//home 用户信息
+	fileList := make([]service.LoginInfo, 0)
+	a.DB.Find(&fileList)
+	a.Info.User = fileList
+
+	// 文件信息 CfgDirInfo 缓存到本地
+	dirPath := fmt.Sprintf(config.CfgDirInfo, a.AppPath.CfgPath)
+
+	// 首页读配置
+	list := service.DirInfo{}
+
+	if xfile.IsExist(dirPath) {
+		//如果配置文件存在 就读文件，失败再去重新获取
+		if err := yaml.Unmarshal([]byte(xfile.Read(dirPath)), &list); err != nil {
+
+			a.Info.Dir = service.GetDirInfo(config.HomeInfoDir)
+			if err = service.PutDirInfoDesk(a.Info.Dir, dirPath); err != nil {
+				log.Printf(" dirPath Unmarshal failed,err: %v", err)
+			}
+		} else {
+			//读取成功后 将值返回
+			a.Info.Dir = list
+		}
+	} else {
+		//如果配置文件不存在 重新获取
+		a.Info.Dir = service.GetDirInfo(config.HomeInfoDir)
+		if err := service.PutDirInfoDesk(a.Info.Dir, dirPath); err != nil {
+			log.Printf(" dirPath Unmarshal failed,err: %v", err)
+		}
+	}
+
+	//任务管理初始化
+	a.taskManage = service.TaskManager{}
+	a.taskManage.TasksDB = service.NewTaskDB(a.AppPath.DBFile)
+
+	return
+
+}
+
 func (a *App) database() {
 	a.Log.Info("OnStartup migrate begin")
 	// 1. 如果 cantor.db 存在, 初始化, 返回
-	if xfile.IsExist(a.DBFile) {
-		a.DB = service.NewDB(a.DBFile)
-
+	if xfile.IsExist(a.AppPath.DBFile) {
+		a.DB = service.NewDB(a.AppPath.DBFile)
 	} else {
-		a.DB = service.NewDB(a.DBFile)
+		a.DB = service.NewDB(a.AppPath.DBFile)
+
 		//list := make([]service.LoginInfo,0)
 		//无本地文件 初始化固定字符串至本地 sqliteDB 中
 		jsonContent := service.InitLoginTable()
@@ -210,11 +235,11 @@ func (a *App) Menu() *menu.Menu {
 				"打开配置文件",
 				keys.Combo("C", keys.CmdOrCtrlKey, keys.ShiftKey),
 				func(_ *menu.CallbackData) {
-					if !xfile.IsExist(a.CfgFile) {
+					if !xfile.IsExist(a.AppPath.CfgFile) {
 						a.diag("文件不存在, 请先更新配置")
 						return
 					}
-					_, err := exec.Command("open", a.CfgFile).Output()
+					_, err := exec.Command("open", a.AppPath.CfgFile).Output()
 					if err != nil {
 						a.diag("操作失败: " + err.Error())
 						return
@@ -225,11 +250,11 @@ func (a *App) Menu() *menu.Menu {
 				"打开日志文件",
 				keys.Combo("L", keys.CmdOrCtrlKey, keys.ShiftKey),
 				func(_ *menu.CallbackData) {
-					if !xfile.IsExist(a.LogFile) {
+					if !xfile.IsExist(a.AppPath.LogFile) {
 						a.diag("文件不存在, 请先更新配置")
 						return
 					}
-					_, err := exec.Command("open", a.LogFile).Output()
+					_, err := exec.Command("open", a.AppPath.LogFile).Output()
 					if err != nil {
 						a.diag("操作失败: " + err.Error())
 						return
@@ -250,9 +275,7 @@ func (a *App) Menu() *menu.Menu {
 
 // BatchUploadFile ...
 func (a *App) BatchUploadFile() *utils.Response {
-	//if t.Git.Repo == "" {
-	//	return internal.Fail("请先更新配置")
-	//}
+
 	files, err := runtime.OpenMultipleFilesDialog(a.Ctx, runtime.OpenDialogOptions{
 		Title: "选择图片",
 		Filters: []runtime.FileFilter{{

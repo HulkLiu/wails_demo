@@ -3,7 +3,6 @@ package internal
 import (
 	"changeme/config"
 	"changeme/internal/define"
-	"changeme/internal/utils"
 	"encoding/json"
 	"fmt"
 	"github.com/evercyan/brick/xfile"
@@ -36,20 +35,10 @@ type BakSetting struct {
 	ContainerID string `json:"ContainerID"`
 }
 
-func NewSet() SettingManage {
-	var data SettingManage
-	cfgPath := utils.GetCfgPath()
+func NewSet(cfgPath string) SettingManage {
 
-	data = SettingManage{
+	data := SettingManage{
 		Path: fmt.Sprintf(config.SettingFile, cfgPath),
-		//Data: &SettingData{
-		//	Bak: BakSetting{
-		//		EsIndex:     config.EsIndex,
-		//		LocalPath:   config.HomeInfoDir,
-		//		ExcelDir:    config.ExcelDir,
-		//		ContainerID: config.ContainerID,
-		//	},
-		//},
 	}
 	data.readJson()
 	return data

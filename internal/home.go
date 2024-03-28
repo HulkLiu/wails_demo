@@ -5,6 +5,7 @@ import (
 )
 
 func (a *App) GetHomeInfo() define.M {
+
 	a.Info.Video = a.Vm.TotalInfo
 
 	return define.M{

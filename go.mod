@@ -5,8 +5,11 @@ go 1.18
 require (
 	github.com/360EntSecGroup-Skylar/excelize v1.4.1
 	github.com/evercyan/brick v0.0.6
+	github.com/go-sql-driver/mysql v1.7.1
+	github.com/jinzhu/gorm v1.9.16
 	github.com/mattn/go-isatty v0.0.19
 	github.com/olivere/elastic/v7 v7.0.32
+	github.com/pkg/errors v0.9.1
 	github.com/shirou/gopsutil v3.21.11+incompatible
 	github.com/sirupsen/logrus v1.9.3
 	github.com/vbauerster/mpb/v7 v7.5.3
@@ -40,7 +43,6 @@ require (
 	github.com/mattn/go-sqlite3 v1.14.17 // indirect
 	github.com/mohae/deepcopy v0.0.0-20170929034955-c48cc78d4826 // indirect
 	github.com/pkg/browser v0.0.0-20210911075715-681adbf594b8 // indirect
-	github.com/pkg/errors v0.9.1 // indirect
 	github.com/rivo/uniseg v0.4.4 // indirect
 	github.com/rogpeppe/go-internal v1.11.0 // indirect
 	github.com/rs/xid v1.3.0 // indirect

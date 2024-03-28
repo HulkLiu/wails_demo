@@ -4,8 +4,8 @@
       <n-layout-header style="margin-top: 12px">基本统计</n-layout-header>
       <n-layout-content  content-style="padding: 24px;">
         <n-row>
-          <n-col :span="12">
-            <n-statistic  label="视频资源数量" :value="refData.value">
+          <n-col :span="4">
+            <n-statistic style="margin-bottom: 10px" label="视频资源数量" :value="refData.value">
               <template #prefix>
                 <n-icon>
                   <md-save />
@@ -23,9 +23,7 @@
                 </n-popover>
               </template>
             </n-statistic>
-          </n-col>
-          <n-col :span="12">
-            <n-statistic label="活跃用户">
+            <n-statistic style="margin-bottom: 10px" label="活跃用户">
 
               <n-popover trigger="hover">
                 <template #trigger>
@@ -37,11 +35,15 @@
               </n-popover>
             </n-statistic>
           </n-col>
+
+          <n-col :span="4">
+            <div id="chartContainer2" style="width: 500px;height:200px;margin-top: 1px;margin-bottom: 1px"></div>
+          </n-col>
         </n-row>
 
       </n-layout-content>
       <n-layout-footer >其他统计</n-layout-footer>
-      <div id="chartContainer" style="width: 800px;height:400px;margin-top: 27px"></div>
+      <div id="chartContainer" style="width: 700px;height:400px;margin-top: 20px"></div>
     </n-layout>
   </n-space>
 </template>
@@ -69,6 +71,7 @@ export default defineComponent({
         filed:[],
         count:[],
         size:[],
+        dirSizeInfo:[],
       },
     })
 
@@ -89,8 +92,11 @@ export default defineComponent({
         refData.value.dirInfo.filed = res.data.Dir.Filed
         refData.value.dirInfo.count = res.data.Dir.Count
         refData.value.dirInfo.size = res.data.Dir.Size
-        console.log(refData.value.dirInfo.filed )
+        refData.value.dirInfo.dirSizeInfo = res.data.Dir.DirSizeInfo
+
+        console.log(refData.value.dirInfo.dirSizeInfo )
         initChart()
+        initChart2()
 
         // refData.value.dirInfo.filed = JSON.stringify(res.data.Dir.Filed).replace(/\\"/g, '').replace(/^"|"$/g, '')
         // refData.value.dirInfo.count = JSON.stringify(res.data.Dir.Count).replace(/^"|"$/g, '')
@@ -189,6 +195,52 @@ export default defineComponent({
       });
     }
 
+    const initChart2 = ()  =>{
+      const chartContainer = document.getElementById('chartContainer2')
+      const chart = echarts.init(chartContainer)
+      // 在这里配置你的图表选项和数据
+      // 例如：chart.setOption({...})
+      chart.setOption({
+        tooltip: {
+          trigger: 'item'
+        },
+        legend: {
+          show: true,  // 将show属性修改为false
+          top: '5%',
+          orient: 'vertical',
+          left: 'right'
+        },
+        series: [
+          {
+            name: '',
+            type: 'pie',
+            radius: ['40%', '70%'],
+            avoidLabelOverlap: false,
+            itemStyle: {
+              borderRadius: 10,
+              borderColor: '#fff',
+              borderWidth: 2
+            },
+            label: {
+              show: false,
+              position: 'center'
+            },
+            emphasis: {
+              label: {
+                show: true,
+                fontSize: 30,
+                fontWeight: 'bold'
+              }
+            },
+            labelLine: {
+              show: false
+            },
+            data:refData.value.dirInfo.dirSizeInfo,
+          }
+        ]
+      });
+    }
+
     onMounted(() => {
       HomeInfo()
     })
@@ -196,6 +248,7 @@ export default defineComponent({
       list,
       refData,
       initChart,
+      initChart2,
 
     }
 
