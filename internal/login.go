@@ -43,7 +43,7 @@ func (a *App) SetConfig(content string) *utils.Response {
 
 	b, _ := yaml.Marshal(a.Login)
 	log.Printf("login:%+v", a.Login)
-	if err := xfile.Write(a.CfgFile, string(b)); err != nil {
+	if err := xfile.Write(a.AppPath.CfgFile, string(b)); err != nil {
 		a.Log.Errorf("SetConfig Write err: %v", err)
 		return utils.Fail(err.Error())
 	}

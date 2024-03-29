@@ -16,7 +16,6 @@ import (
 func (a *App) VideoList() define.H {
 
 	data, err := a.Vm.VideoList()
-	//data, err := service.DefaultList()
 
 	if err != nil {
 		log.Printf("%v", err)
@@ -97,7 +96,6 @@ func (a *App) VideoManage(form string) define.H {
 }
 
 func (a *App) VideoCreate(form interface{}) define.H {
-	log.Printf("VideoCreate :form:%v ,Type:%T", form, form)
 
 	jsonStr, err := json.Marshal(form)
 	if err != nil {
@@ -111,7 +109,6 @@ func (a *App) VideoCreate(form interface{}) define.H {
 	if err != nil {
 		log.Printf("err:%v", err)
 	}
-	log.Printf("myStruct:%+v ,Type:%T", myStruct, myStruct)
 	msg := "新建成功"
 	if myStruct.Id != "" {
 		msg = "修改成功"

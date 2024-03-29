@@ -50,6 +50,18 @@ export function Greet(arg1) {
   return window['go']['internal']['App']['Greet'](arg1);
 }
 
+export function InitConfig() {
+  return window['go']['internal']['App']['InitConfig']();
+}
+
+export function InitLogin() {
+  return window['go']['internal']['App']['InitLogin']();
+}
+
+export function InitPath() {
+  return window['go']['internal']['App']['InitPath']();
+}
+
 export function Menu() {
   return window['go']['internal']['App']['Menu']();
 }

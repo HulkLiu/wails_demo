@@ -27,7 +27,7 @@ func (t *Task) TableName() string {
 }
 
 func NewTaskDB(dbFilePath string) *gorm.DB {
-	//isExist := xfile.IsExist(dbFilePath)
+
 	db, err := gorm.Open(sqlite.Open(dbFilePath), &gorm.Config{
 		Logger: gormLogger.Discard,
 	})

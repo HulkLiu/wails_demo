@@ -62,6 +62,7 @@ type LoginInfo struct {
 	UserName string
 	PassWord string
 }
+
 type PayloadJson struct {
 	Title        string `json:"Title"`
 	VideoShort   string `json:"VideoShort"`

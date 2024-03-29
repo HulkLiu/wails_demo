@@ -28,6 +28,12 @@ export function GetTaskList():Promise<utils.Response>;
 
 export function Greet(arg1:string):Promise<string>;
 
+export function InitConfig():Promise<void>;
+
+export function InitLogin():Promise<void>;
+
+export function InitPath():Promise<void>;
+
 export function Menu():Promise<menu.Menu>;
 
 export function OpenFolder(arg1:string):Promise<define.H>;

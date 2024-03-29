@@ -55,7 +55,7 @@ var (
 
 // 文件配置
 var (
-	CfgFile     = "%s/config.yaml"
+	CfgFile     = "%s/esConfig.yaml"
 	CfgDirInfo  = "%s/dirInfo.yaml"
 	LogFile     = "%s/app.log"
 	DBFile      = "%s/videoDB.db"

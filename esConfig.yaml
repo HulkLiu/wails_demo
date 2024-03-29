@@ -1,0 +1,3 @@
+elasticsearch:
+  address: "http://localhost:9200" # Elasticsearch的访问地址
+  sniff: false # 是否启用sniffing

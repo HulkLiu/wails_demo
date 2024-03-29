@@ -3,6 +3,7 @@
     <el-header class="header-area" style="height: 89px;">
       <n-button @click="VideoListExport">导出 EXCEL </n-button>
       <n-button @click="dialogVisibleAdd"> 新增视频 </n-button>
+      <n-button @click="dialogVisibleAddBatch"> 批量新增 </n-button>
       <n-input v-model:value="keyword" placeholder="请输入关键字" @keyup.enter="search" @emit-video-list="search"/>
     </el-header>
     <n-message-provider>
@@ -204,6 +205,7 @@ export default defineComponent({
     let form = reactive({})
     let data = ref()
 
+    const addBetchTable = ref(false)
     const dialogVisible = ref(false)
     // const dialogVisibleAdd = ref(false)
     const modelRef = ref({
@@ -358,7 +360,9 @@ export default defineComponent({
         }, 100); // 1000 是延迟1秒执行
 
       },
-
+      dialogVisibleAddBatch(){
+        addBetchTable.value = true
+      },
       dialogVisibleAdd(){
         modelRef.value = ({
           Id: "",

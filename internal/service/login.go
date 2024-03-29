@@ -21,7 +21,6 @@ type Login struct {
 	AccessToken string `json:"access_token" yaml:"accessToken"`
 }
 
-// ----------------------------------------------------------------
 func InitLoginTable() string {
 	LoginArr := []LoginInfo{
 		{

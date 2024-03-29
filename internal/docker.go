@@ -10,12 +10,11 @@ import (
 	"github.com/shirou/gopsutil/process"
 )
 
-//func main() {
-//	err := cmdDockerStart()
-//	if err != nil {
-//		log.Printf("err:%v", err)
-//	}
-//}
+var (
+	ContainerID           = "71b0a4b9b297c10500a33588579a8426b3db47b5f6c1af152664dca8dea29c91"
+	DockerDesktopStarted  = make(chan bool)
+	DockerDesktopStarted2 = make(chan bool)
+)
 
 func CmdDockerStart() error {
 	// 启动Docker Desktop

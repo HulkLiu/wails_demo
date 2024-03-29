@@ -332,6 +332,55 @@ func (v *VideoManage) getSearchResult2(q string, from int) (define.SearchResult,
 	return result, nil
 }
 
+// FileTypes 包含我们要查找的文件类型关键字
+type FileTypes struct {
+	Number       string
+	Title        string
+	Img          []string
+	VideoFormal  []string
+	VideoPreview []string
+	VideoShort   []string
+}
+
+// ScanDirectory 遍历指定目录，寻找包含关键字的文件，并返回文件名
+func (v *VideoManage) ScanDirectory(dir string) (map[string]FileTypes, error) {
+	files, err := os.ReadDir(dir)
+	if err != nil {
+		return nil, err
+	}
+
+	results := make(map[string]FileTypes)
+	for _, file := range files {
+		if file.IsDir() {
+			subDir := filepath.Join(dir, file.Name())
+			subFiles, err := os.ReadDir(subDir)
+			if err != nil {
+				return nil, err
+			}
+			fileTypes := FileTypes{}
+			for _, subFile := range subFiles {
+				filename := subFile.Name()
+				if strings.Contains(filename, "jpg") {
+					fileTypes.Img = append(fileTypes.Img, filename)
+				} else if strings.Contains(filename, "png") {
+					fileTypes.Img = append(fileTypes.Img, filename)
+				} else if strings.Contains(filename, "VideoFormal") {
+					fileTypes.VideoFormal = append(fileTypes.VideoFormal, filename)
+				} else if strings.Contains(filename, "VideoPreview") {
+					fileTypes.VideoPreview = append(fileTypes.VideoPreview, filename)
+				} else if strings.Contains(filename, "VideoShort") {
+					fileTypes.VideoShort = append(fileTypes.VideoShort, filename)
+				}
+				fileTypes.Number = file.Name()
+				fileTypes.Title = filepath.Base(filename)
+
+			}
+			results[file.Name()] = fileTypes
+		}
+	}
+	return results, nil
+}
+
 func (v *VideoManage) getSearchResult(q string, from int) (define.SearchResult, error) {
 	var result define.SearchResult
 	if q == "" {

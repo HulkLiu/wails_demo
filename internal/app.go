@@ -16,8 +16,10 @@ import (
 	"gopkg.in/yaml.v3"
 	"gorm.io/gorm"
 	"log"
+	"os"
 	"os/exec"
 	"path"
+	"path/filepath"
 	"reflect"
 	"strings"
 	"sync"
@@ -31,13 +33,12 @@ type App struct {
 	Log   *logrus.Logger
 	Login *service.Login
 
-	AppPath *AppPath
+	AppPath AppPath
 
 	DB *gorm.DB //LoginDB
+	Vm *service.VideoManage
 
-	Vm   *service.VideoManage
-	Info AppInfo
-
+	Info       AppInfo
 	set        SettingManage
 	taskManage service.TaskManager
 }
@@ -47,6 +48,7 @@ type AppPath struct {
 	CfgFile string
 	LogFile string
 	DBFile  string
+	EsCpath string
 }
 
 type AppInfo struct {
@@ -59,20 +61,60 @@ func NewApp() *App {
 	return &App{}
 }
 
-var (
-	ContainerID           = "71b0a4b9b297c10500a33588579a8426b3db47b5f6c1af152664dca8dea29c91"
-	DockerDesktopStarted  = make(chan bool)
-	DockerDesktopStarted2 = make(chan bool)
-)
+func (a *App) OnStartup(ctx context.Context) {
+	a.Ctx = ctx
 
-func initEs() *service.VideoManage {
+	a.InitPath() //初始化Path信息
 
-	client, err := elastic.NewClient(elastic.SetSniff(false))
+	a.set = NewSet(a.AppPath.CfgPath) //功能 - 设置管理
+
+	a.Vm = initEs(a.AppPath.EsCpath) //初始化 Es
+
+	a.database() // init sqlite
+
+	a.InitLogin() // 加载缓存登录信息
+
+	a.InitConfig() //加载配置信息
+
+	a.taskManage.TasksDB = service.NewTaskDB(a.AppPath.DBFile) //任务管理初始化
+
+	return
+}
+
+type Config struct {
+	Elasticsearch struct {
+		Address string `yaml:"address"`
+		Sniff   bool   `yaml:"sniff"`
+	} `yaml:"elasticsearch"`
+}
+
+func readConfig(path string) (*Config, error) {
+	cfg := &Config{}
+	data, err := os.ReadFile(path)
 	if err != nil {
-		if err != nil {
-			log.Fatal(err)
-		}
+		return nil, err
 	}
+	err = yaml.Unmarshal(data, cfg)
+	if err != nil {
+		return nil, err
+	}
+	return cfg, nil
+}
+
+func initEs(path string) *service.VideoManage {
+	cfg, err := readConfig(path)
+	if err != nil {
+		log.Fatal(err)
+	}
+
+	client, err := elastic.NewClient(
+		elastic.SetURL(cfg.Elasticsearch.Address),
+		elastic.SetSniff(cfg.Elasticsearch.Sniff),
+	)
+	if err != nil {
+		log.Fatal(err)
+	}
+
 	data := service.VideoManage{
 		ElasticIndex:     config.EsIndex,
 		Client:           client,
@@ -85,43 +127,41 @@ func initEs() *service.VideoManage {
 	return &data
 }
 
+// InitPath 初始化路径
 func (a *App) InitPath() {
+	//程序目录
 	a.AppPath.CfgPath = utils.GetCfgPath()
+
+	//日志文件
 	a.AppPath.LogFile = fmt.Sprintf(config.LogFile, a.AppPath.CfgPath)
+
+	//配置文件
 	a.AppPath.CfgFile = fmt.Sprintf(config.CfgFile, a.AppPath.CfgPath)
+
+	//sqlite
 	a.AppPath.DBFile = fmt.Sprintf(config.DBFile, a.AppPath.CfgPath)
 
-}
+	dir, _ := os.Getwd()
 
-func (a *App) OnStartup(ctx context.Context) {
-	a.Ctx = ctx
-
-	//初始化Path信息
-	a.InitPath()
-
-	//设置管理
-	a.set = NewSet(a.AppPath.CfgPath)
-
-	//初始化 Es
-	a.Vm = initEs()
+	a.AppPath.EsCpath = filepath.Join(dir, "esConfig.yaml")
 
 	// 日志
 	a.Log = utils.NewLogger(a.AppPath.LogFile)
+}
 
+func (a *App) InitLogin() {
 	//login 信息
 	a.Login = &service.Login{}
 	if err := yaml.Unmarshal([]byte(xfile.Read(a.AppPath.CfgFile)), a.Login); err != nil {
 		a.Log.Errorf("OnStartup cfgfile err: %v", err)
 	}
-
-	// init sqlite
-	a.database()
-
 	//home 用户信息
-	fileList := make([]service.LoginInfo, 0)
+	var fileList []service.LoginInfo
 	a.DB.Find(&fileList)
 	a.Info.User = fileList
+}
 
+func (a *App) InitConfig() {
 	// 文件信息 CfgDirInfo 缓存到本地
 	dirPath := fmt.Sprintf(config.CfgDirInfo, a.AppPath.CfgPath)
 
@@ -147,16 +187,10 @@ func (a *App) OnStartup(ctx context.Context) {
 			log.Printf(" dirPath Unmarshal failed,err: %v", err)
 		}
 	}
-
-	//任务管理初始化
-	a.taskManage = service.TaskManager{}
-	a.taskManage.TasksDB = service.NewTaskDB(a.AppPath.DBFile)
-
-	return
-
 }
 
 func (a *App) database() {
+
 	a.Log.Info("OnStartup migrate begin")
 	// 1. 如果 cantor.db 存在, 初始化, 返回
 	if xfile.IsExist(a.AppPath.DBFile) {
